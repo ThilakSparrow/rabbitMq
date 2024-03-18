@@ -1,0 +1,40 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class InventoryService {
+	
+	@Autowired
+	private InventoryRepository inventoryRepository;
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@RabbitListener(queues = ProductMessageConfig.PRODUCT_UPDATES_QUEUE)
+	public void handleProductMessage (ProductUpdateMessage message) {
+		switch (message.getUpdateType()){
+			case CREATE :
+				log.info("New Product Added");
+				inventoryRepository.save(new Inventory(message.getProductName(),message.getQuantity(),message.getSkuCode()));
+				System.out.println("New Product Added" + message);
+				break;
+			case UPDATE :
+				log.info("Product Updated");
+				break;
+			case DELETE :
+				log.info("A Product Removed");
+				break;
+		}
+		log.info("Product update processed: {}", message);
+	}
+	
+	@RabbitListener(queues = OrderMessageConfig.ORDER_STATUS_QUEUE)
+	public void handleOrderMessage(OrderMessage message) {
+		System.out.println(message);
+	}
+
+}

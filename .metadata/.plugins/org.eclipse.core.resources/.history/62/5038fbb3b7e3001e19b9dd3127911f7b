@@ -1,0 +1,21 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import java.util.Date;
+
+import lombok.Data;
+
+public class ProductMessage {
+
+	private String messageId;
+	private String message;
+	private Product product;
+	private Date date;
+	private UpdateType updateType;
+	
+	public enum UpdateType {CREATE, UPDATE, DELETE}
+	
+
+	public ProductMessage() { super(); }
+
+
+}

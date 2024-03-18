@@ -1,0 +1,64 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import io.spring.rabbitmq.rmqinventoryservice.messageconfig.OrderConfirmationMessageConfig;
+import io.spring.rabbitmq.rmqinventoryservice.messageconfig.OrderMessageConfig;
+import io.spring.rabbitmq.rmqinventoryservice.messageconfig.ProductMessageConfig;
+
+@Service
+public class InventoryService {
+	
+	@Autowired
+	private InventoryRepository inventoryRepository;
+	
+	@Autowired
+	private RabbitTemplate template;
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@RabbitListener(queues = ProductMessageConfig.PRODUCT_UPDATES_QUEUE)
+	public void handleProductMessage (ProductUpdateMessage message) {
+		switch (message.getUpdateType()){
+			case CREATE :
+				log.info("New Product Added");
+				inventoryRepository.save(new InventoryItem(message.getProductName(),message.getQuantity(),message.getSkuCode()));
+				System.out.println("New Product Added" + message);
+				break;
+			case UPDATE :
+				log.info("Product Updated");
+				break;
+			case DELETE :
+				log.info("A Product Removed");
+				break;
+		}
+		log.info("Product update processed: {}", message);
+	}
+	
+	@RabbitListener(queues = OrderMessageConfig.ORDER_STATUS_QUEUE)
+	public void handleOrderMessage(OrderMessage message) {
+		
+		InventoryResponseMessage responseMessage = new InventoryResponseMessage();
+		
+		String requestedProductSkuCode = message.getSkuCode();
+		int requestedQuantity = message.getQuantity();
+	
+		InventoryItem  requestedProduct = inventoryRepository.findInventoryItemBySkuCode(requestedProductSkuCode);
+		
+		if(requestedProduct == null || requestedProduct.getQuantity() > requestedQuantity) {
+			responseMessage.setMessageId(UUID.randomUUID().toString());
+			responseMessage.setMessage("Order for id : " + message.getMessageId() + "is Fullfilable");
+			responseMessage.setFullilable(true);
+			template.convertAndSend(OrderConfirmationMessageConfig.ORDER_SERVICE_EXCHANGE);
+			System.out.println("Order Fullfillabale");
+		}
+	}
+
+}

@@ -1,0 +1,5 @@
+package io.spring.rabbitmq.rmqinventoryservice.messageconfig;
+
+public class OrderErrorMessageConfig {
+
+}

@@ -1,0 +1,6 @@
+spring.application.name=rmq-inventory-service
+
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+
+server.port = 9001

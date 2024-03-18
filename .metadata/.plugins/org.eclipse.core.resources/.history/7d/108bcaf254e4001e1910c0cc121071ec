@@ -1,0 +1,34 @@
+package io.spring.rabbitmq.rmqinventoryservice.messageconfig;
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration
+public class OrderConfirmationMessageConfig {
+	
+    public static final String ORDER_CONFIRMATION_QUEUE = "order.confirmation.queue";
+    public static final String INVENTORY_SERVICE_EXCHANGE = "inventory.responses.exchange";
+    public static final String ORDER_PLACED_ROUTING_KEY = "order.confirmed";
+    
+    public static final String ORDER_PLACED_ROUTING_KEY = "order.placed"; // More descriptive routing key
+	
+	@Bean
+    public Queue inventoryResponsesQueue() {
+        return new Queue(ORDER_CONFIRMATION_QUEUE, true); 
+    }
+
+    @Bean
+    public DirectExchange inventoryResponsesExchange() {
+        return new DirectExchange(INVENTORY_SERVICE_EXCHANGE);
+    }
+
+    @Bean
+    public Binding inventoryResponsesBinding(Queue inventoryResponsesQueue, DirectExchange inventoryResponsesExchange) {
+        return BindingBuilder.bind(inventoryResponsesQueue).to(inventoryResponsesExchange).with("inventory.responses");
+    }
+}

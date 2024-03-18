@@ -1,0 +1,7 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface InventoryREpository extends JpaRepository<Inventory, Integer> {
+
+}

@@ -1,0 +1,22 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+
+@RestController
+public class ProductController {
+
+	@Autowired
+	private final ProductService productService; 
+	
+	@PostMapping("/add")
+	public ResponseEntity<?> addProdcut(@RequestBody Product product){
+		
+		return productService.addProduct(product);
+		
+	}
+}

@@ -1,0 +1,30 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProductService {
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+	@Autowired
+	private RabbitTemplate template;
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	public ResponseEntity<?> addProduct(Product product){
+		productRepository.save(product);
+		log.info("Product saved {}",product);
+
+		
+		
+		return new ResponseEntity<>("Product Added Successfully!!",HttpStatus.CREATED);
+	}
+	
+}

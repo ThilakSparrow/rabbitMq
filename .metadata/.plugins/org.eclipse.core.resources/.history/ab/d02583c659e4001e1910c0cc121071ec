@@ -1,0 +1,49 @@
+package io.spring.rabbitmq.rmqorderservice;
+
+import java.util.Date;
+import java.util.UUID;
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+
+	@Autowired
+	private RabbitTemplate template;
+	
+	public ResponseEntity<?> placeOrder(Order order){
+	
+		OrderMessage message = new OrderMessage();
+		
+		message.setMessageId(UUID.randomUUID().toString());
+		message.setMessage("Order Status");
+		message.setSkuCode("ABC-12345-S-BL");
+		message.setQuantity(5);
+		message.setDate(new Date());
+
+		template.convertAndSend(OrderMessageConfig.INVENTORY_EVENTS_EXCHANGE, 
+								OrderMessageConfig.ORDER_STATUS_ROUTING_KEY, 
+								message);
+						
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	
+	@RabbitListener(queues = OrderConfirmationResponseMessageConfig.ORDER_CONFIRMATION_QUEUE)
+	public void handleOrderReponseStatus(InventoryResponseMessage message) {
+			System.out.println("Order Placed!!");
+			System.out.println(message);
+	}
+	
+	@RabbitListener(queues = OrderErrorResponseConfig.ORDER_CONFIRMATION_QUEUE)
+	public void handleOrderReponseStatus(InventoryResponseMessage message) {
+			System.out.println("Order Placed!!");
+			System.out.println(message);
+	}
+	
+}

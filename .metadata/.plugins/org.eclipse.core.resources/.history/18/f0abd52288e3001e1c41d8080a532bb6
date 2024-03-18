@@ -1,0 +1,19 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ProductService {
+
+	private final ProductRepository productRepository;
+	
+	public ResponseEntity<?> addProduct(Product product){
+		return new ResponseEntity<>("Product Added Successfully!!",HttpStatus.CREATED);
+	}
+	
+}

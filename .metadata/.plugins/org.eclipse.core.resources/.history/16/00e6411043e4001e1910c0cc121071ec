@@ -1,0 +1,11 @@
+package io.spring.rabbitmq.rmqorderservice;
+
+import java.util.List;
+
+public class OrderMessage {
+
+	private String message;
+	private String skuCode;
+	private int quantity;
+	
+}

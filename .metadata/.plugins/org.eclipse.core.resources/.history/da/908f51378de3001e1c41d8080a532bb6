@@ -1,0 +1,12 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import java.util.Date;
+
+public class Message {
+
+	private String messageId;
+	private String message;
+	private Product product;
+	private Date date;
+	
+}

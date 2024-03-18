@@ -1,0 +1,29 @@
+package io.spring.rabbitmq.orderservice.model;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MessagePublisher {
+
+	@Autowired
+	RabbitTemplate template;
+	
+	
+	@PostMapping("/publish")
+	public ResponseEntity<?> publish(@RequestBody Message message){
+		message.setDate(LocalDateTime.now());
+		message.setMessageId(UUID.randomUUID().toString());
+		template.convertAndSend(MessageConfig.EXCHANGE, null, message)
+		return new ResponseEntity<>("Message Pushlished Successfully!!", HttpStatus.OK);
+	}
+	
+}

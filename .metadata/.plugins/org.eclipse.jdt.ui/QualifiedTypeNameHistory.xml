@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+    <fullyQualifiedTypeName name="org.springframework.util.backoff.ExponentialBackOff"/>
+    <fullyQualifiedTypeName name="org.springframework.retry.backoff.ExponentialBackOffPolicy"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqproductservice.ProductUpdatesMessageConfig"/>
+    <fullyQualifiedTypeName name="com.rabbitmq.client.ConnectionFactory"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.connection.CachingConnectionFactory"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqproductservice.ProductMessage.UpdateType"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.TopicExchange"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.BindingBuilder"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.InventorySevice"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.MessageConfig"/>
+    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+    <fullyQualifiedTypeName name="org.slf4j.Logger"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.rabbit.connection.ConnectionFactory"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.InventoryRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatusCode"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.Binding"/>
+    <fullyQualifiedTypeName name="org.springframework.amqp.core.Queue"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.messageconfig.OrderConfirmationMessageConfig"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.InventoryResponseMessage"/>
+    <fullyQualifiedTypeName name="java.util.UUID"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqinventoryservice.messageconfig.OrderErrorMessageConfig"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqorderservice.OrderConfirmationResponseMessageConfig"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="io.spring.rabbitmq.rmqorderservice.model.Order"/>
+</qualifiedTypeNameHistroy>

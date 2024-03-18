@@ -1,0 +1,25 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ProductUpdatesMessageConfig {
+
+	public final static String INVENTORY_QUEUE = "inventory_queue";
+	public final static String INVENTORY_EXCHANGE = "inventory_exchange";
+	public final static String INVENTORY_ROUTING_KEY = "product.updates";
+
+	@Bean
+	public Queue queue() {
+		return new Queue(INVENTORY_QUEUE, true);
+	}
+
+	@Bean
+	public TopicExchange topicExchange() {
+		return new TopicExchange(INVENTORY_EXCHANGE, true);
+	}
+
+}

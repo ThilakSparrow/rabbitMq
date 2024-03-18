@@ -1,0 +1,48 @@
+package io.spring.rabbitmq.orderservice.model;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+public class Message {
+
+	private String messageId;
+	private String message;
+	private Date date;
+
+	public Message() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Message(String messageId, String message, Date date) {
+		super();
+		this.messageId = messageId;
+		this.message = message;
+		this.date = date;
+	}
+
+	public String getMessageId() {
+		return messageId;
+	}
+
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+}

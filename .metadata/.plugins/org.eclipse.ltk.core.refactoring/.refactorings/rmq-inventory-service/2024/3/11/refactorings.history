@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;io.spring.rabbitmq.rmqinventoryservice.ProductMessage&apos; to &apos;ProductUpdateMessage&apos;&#x0A;- Original project: &apos;rmq-inventory-service&apos;&#x0A;- Original element: &apos;io.spring.rabbitmq.rmqinventoryservice.ProductMessage&apos;&#x0A;- Renamed element: &apos;io.spring.rabbitmq.rmqinventoryservice.ProductUpdateMessage&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ProductMessage&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;io.spring.rabbitmq.rmqinventoryservice{ProductMessage.java[ProductMessage" matchStrategy="1" name="ProductUpdateMessage" qualified="false" references="true" similarDeclarations="false" stamp="1710611380727" textual="false" version="1.0"/>
+</session>

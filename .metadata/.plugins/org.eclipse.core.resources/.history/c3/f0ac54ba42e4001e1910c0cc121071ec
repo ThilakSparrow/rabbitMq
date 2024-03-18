@@ -1,0 +1,9 @@
+package io.spring.rabbitmq.rmqorderservice;
+
+import java.util.List;
+
+public class OrderMessage {
+
+	private List<OrderItems> orderItems;
+	
+}

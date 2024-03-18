@@ -1,0 +1,90 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+import java.util.Date;
+
+
+public class ProductMessage {
+
+	private String messageId;
+	private String message;
+	private long productId;
+	private String skuCode;
+	private Date date;
+	private UpdateType updateType;
+	
+	public enum UpdateType {CREATE, UPDATE, DELETE}
+	
+	public ProductMessage() { super(); }
+
+	public ProductMessage(String messageId, String message, long productId, String skuCode, Date date,
+			UpdateType updateType) {
+		super();
+		this.messageId = messageId;
+		this.message = message;
+		this.productId = productId;
+		this.skuCode = skuCode;
+		this.date = date;
+		this.updateType = updateType;
+	}
+
+	public String getMessageId() {
+		return messageId;
+	}
+
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(long productId) {
+		this.productId = productId;
+	}
+
+	public String getSkuCode() {
+		return skuCode;
+	}
+
+	public void setSkuCode(String skuCode) {
+		this.skuCode = skuCode;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public UpdateType getUpdateType() {
+		return updateType;
+	}
+
+	public void setUpdateType(UpdateType updateType) {
+		this.updateType = updateType;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductMessage [messageId=" + messageId + ", message=" + message + ", productId=" + productId
+				+ ", skuCode=" + skuCode + ", date=" + date + ", updateType=" + updateType
+				+ "]";
+	}
+
+	
+
+	
+	
+
+}

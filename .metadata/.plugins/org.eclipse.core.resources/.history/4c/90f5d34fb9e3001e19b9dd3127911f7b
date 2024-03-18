@@ -1,0 +1,19 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MessageConfig {
+
+	public final static String INVENTORY_QUEUE = "inventory.updates.queue";
+	public final static String INVENTORY_EXCHANGE = "inventory.events.exchange";
+	public final static String INVENTORY_ROUTING_KEY = "product.created";
+	
+	@Bean
+	Queue queue() {
+		return new Queue(INVENTORY_QUEUE, true);
+	}
+	
+}

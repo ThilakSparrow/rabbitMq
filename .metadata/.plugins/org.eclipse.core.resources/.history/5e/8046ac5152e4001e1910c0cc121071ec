@@ -1,0 +1,9 @@
+package io.spring.rabbitmq.rmqinventoryservice;
+
+public class InventoryResponseMessage {
+
+	private String messageId;
+	private String message;
+	private boolean isFullilable;
+	
+}

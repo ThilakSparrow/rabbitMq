@@ -1,0 +1,76 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import java.util.Date;
+
+
+public class ProductMessage {
+
+	private String messageId;
+	private String message;
+	private Product product;
+	private Date date;
+	private UpdateType updateType;
+	
+	public enum UpdateType {CREATE, UPDATE, DELETE}
+	
+	public ProductMessage() { super(); }
+
+	public ProductMessage(String messageId, String message, Product product, Date date, UpdateType updateType) {
+		super();
+		this.messageId = messageId;
+		this.message = message;
+		this.product = product;
+		this.date = date;
+		this.updateType = updateType;
+	}
+
+	public String getMessageId() {
+		return messageId;
+	}
+
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public UpdateType getUpdateType() {
+		return updateType;
+	}
+
+	public void setUpdateType(UpdateType updateType) {
+		this.updateType = updateType;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductMessage [messageId=" + messageId + ", message=" + message + ", product=" + product + ", date="
+				+ date + ", updateType=" + updateType + "]";
+	}
+
+	
+	
+
+}

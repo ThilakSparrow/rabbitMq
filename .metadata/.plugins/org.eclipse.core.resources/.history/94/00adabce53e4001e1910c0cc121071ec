@@ -1,0 +1,32 @@
+package io.spring.rabbitmq.rmqinventoryservice.messageconfig;
+
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+@Configuration
+public class InventoryResponseMessageConfig {
+	
+    public static final String INVENTORY_RESPONSES_QUEUE = "inventory_responses";
+    public static final String INVENTORY_RESPONSES_EXCHANGE = "inventory_responses";
+    public static final String INVENTORY_RESPONSES_ROUTING_KEY = "inventory.responses";
+	
+	@Bean
+    public Queue inventoryResponsesQueue() {
+        return new Queue(INVENTORY_RESPONSES_QUEUE, true); 
+    }
+
+    @Bean
+    public DirectExchange inventoryResponsesExchange() {
+        return new DirectExchange(INVENTORY_RESPONSES_EXCHANGE);
+    }
+
+    @Bean
+    public Binding inventoryResponsesBinding(Queue inventoryResponsesQueue, DirectExchange inventoryResponsesExchange) {
+        return BindingBuilder.bind(inventoryResponsesQueue).to(inventoryResponsesExchange).with("inventory.responses");
+    }
+}

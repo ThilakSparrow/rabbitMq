@@ -1,0 +1,25 @@
+package io.spring.rabbitmq.rmqproductservice;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProductService {
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	public ResponseEntity<?> addProduct(Product product){
+		productRepository.save(product);
+		.debug("message");
+
+		return new ResponseEntity<>("Product Added Successfully!!",HttpStatus.CREATED);
+	}
+	
+}

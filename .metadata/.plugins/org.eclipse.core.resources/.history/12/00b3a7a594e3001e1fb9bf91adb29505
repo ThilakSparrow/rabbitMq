@@ -1,0 +1,19 @@
+spring.application.name=rmq-product-service
+
+server.port = 9000
+
+logging.level.io.sprin.rabbitmq.rmq-product-service = DEBUG
+
+
+spring.rabbitmq.host=localhost  # RabbitMQ server hostname (default: localhost)
+spring.rabbitmq.port=5672       # RabbitMQ server port (default: 5672)
+spring.rabbitmq.username=guest  # Username for authentication (default: guest)
+spring.rabbitmq.password=guest 
+
+
+spring.datasource.url=jdbc:h2:mem:productdb  
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password= 
+
+spring.h2.console.enabled=true

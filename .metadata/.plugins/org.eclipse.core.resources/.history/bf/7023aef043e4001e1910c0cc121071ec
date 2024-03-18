@@ -1,0 +1,13 @@
+package io.spring.rabbitmq.rmqorderservice;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+
+	public ResponseEntity<?> placeOrder(Order order){
+		return null;
+	}
+	
+}
